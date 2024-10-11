@@ -1,13 +1,12 @@
-// import { useState } from 'react'
-// import reactLogo from './assets/react.svg'
-// import viteLogo from '/vite.svg'
-// import './App.css'
+
+import {BrowserRouter as Router, Routes , Route} from  'react-router-dom'
 import Navigaton from './Components/Navigaton'
 import Image from './assets/image 2.png'
+import Home from './Components/Home'
+
 import Rectangle12 from './assets/Rectangle 12.png'
 import Rectangle13 from './assets/Rectangle 13.png'
 import Rectangle11 from './assets/Rectangle 11.png'
-
 import Rectangle9 from './assets/Rectangle 9.png'
 import Rectangle8 from './assets/Rectangle 8.png'
 import Rectangle14 from './assets/Rectangle 14.png'
@@ -21,32 +20,20 @@ function App() {
 
   const footItems = ['DIGITAL', 'PRODUCT', 'DESIGN', 'WORK', 'UX', 'DESIGN', 'DISTRIBUTED', 'CREATIVITY', 'STRATEGY', 'SUSPENCE ', 'GROWTH']
   // const [count, setCount] = useState(0)
+
   
 
   return (
     <>
-      {/* <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p> */}
+  
 
         <Navigaton/>
+
+        <Router>
+          <Routes>
+            <Route path='/BLOGS' element={<Home />}></Route>
+          </Routes>
+        </Router>
         <div className="hero">
           <img src={Image} className="logo imge" alt="React logo"  />
           <h1 className="mHeading">
@@ -57,7 +44,7 @@ function App() {
           </p>
 
         </div>
-
+<div className="hrule"></div>
         <div className="article">
             <h2>All artiicles</h2>
             <div className="container">
@@ -111,8 +98,8 @@ function App() {
 
       <div className="footer">
         <div className="footop">
-          {footItems.map((item) => (
-            <a key={footItems} href="#" className="fitem">{item}</a>
+          {footItems.map((item) => (       
+            <a key={item} href="#" className="fitem">{item}</a>
           ))}
         </div>
         <div className="footaMain finfo">
