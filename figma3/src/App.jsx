@@ -1,35 +1,58 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+
+  const [checked, setChecked] = useState({})
+
+  const handleChecked  =(e) => {
+
+    setChecked({
+      ...checked,
+      [e.target.value]: e.target.checked}
+    )
+    
+  }
+  
+  const checkedItems = [
+    {id:1, value:'apple'},
+    {id:2, value:'bar'},
+    {id:3, value:'car'},
+    {id:4, value:'plane'},
+    {id:5, value:'house'}
+  ]
+
+  const products = {
+    apple: 0,
+    car: 0,
+    house:1
+  }
+
+  const {apple, house} = products
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
       
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-        <p> lets seee what this will do in the git </p>
-      </p>
+
+      <form action="">
+        {checkedItems.map((item)=>(
+          <div key={item.id} className="checkBox">
+            <input  
+              type="checkbox"
+              onChange={handleChecked}
+              checked = {checked[item.name]}
+              value={item.value}
+              id={item.id}
+            
+            />
+            <label htmlFor={item.id}>{item.value}</label>
+          </div>
+        ))}
+      </form>
+
+        <p>{apple} </p>
+        <p>{house} </p>
     </>
   )
 }
