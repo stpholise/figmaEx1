@@ -1,8 +1,9 @@
 import { useState } from 'react'
 import Add from '../assets/carbon_add.svg'
+import Trash from '../assets/whiteTrash.svg'
 import Edit from '../assets/bytesize_edit.svg'
 import { useDispatch, useSelector } from 'react-redux'
-import { addNewSocial } from '../store/UserSlice'
+import { addNewSocial, delMultipleSocial, removeASocial } from '../store/UserSlice'
 import { v4 as uuidv4 } from 'uuid'
 import { modalIsOpen, modalIsClose } from '../store/AppSlice'
 import Close from '../assets/close.svg' 
@@ -20,6 +21,7 @@ const Social = () => {
     const [editValues, setEditValues ] = useState(null)
     const [ currentOption, setCurrentOption ] = useState(null)
     const [isLoading, setIsLoading] = useState(false)
+    const [ selected, setSelected ] = useState([])
 
     const socialPlatforms = [
         { value: 'facebook', label: 'Facebook' },
@@ -53,7 +55,6 @@ const Social = () => {
             formik.setFieldValue('socialTitle', option.label) // sets the value of the socialTitle field to the selected option value
             console.log(option)
         }
-
     }
     
     const initialSocialValues = { 
@@ -98,37 +99,63 @@ const Social = () => {
         const selectedSocial = social.find((social) => social.id === id);
         if (selectedSocial) {
             setEditId(id);
-            console.log(selectedSocial)
             setEditValues(selectedSocial);
+            console.log(editValues)
             handleSocialModal();
         }
+        console.log(editValues)
     }
 
-    const deleteMultiple = () => { 
-        console.log('multiple select ')
+    const handleChecking = (social) => {
+        setSelected(prev => {
+            if(prev.includes(social.id)){
+                return prev.filter((selectedId) => selectedId !== social.id)
+            }else { return [...prev, social.id]}
+        })
+        // console.log(social)
+        console.log(selected)
+    }
+const socialDelMultiple = () => {
+    dispatch(delMultipleSocial(selected))
+    setSelected([])
+}
 
+    const removeSocial = (id, actions) => {
+        dispatch(removeASocial(id))
+        actions.resetForm()
+        closeSocialModal(actions.resetForm)
     }
 
   return (
     <div className='radius5px padd1 bgF mb1'>
         <div className="topFles spaceBet ">
             <h4 className='subHead'>Social accounts</h4>
-            <button className="skillModalBtn btn" onClick={handleSocialModal}><img src={Add} alt="" /></button>
+            {(selected.length > 1) && <button 
+                onClick={socialDelMultiple}
+                aria-label="Delete Selected Skills"
+                className=' pad1 btn blueBg radius5px'
+            > Delete {selected.length} social</button> }
+            {
+                (selected.length <= 1) &&
+                <button className="skillModalBtn btn" onClick={handleSocialModal}><img src={Add} alt="" /></button>
+            }
 
         </div>
         <ul className="skills">
             {social.map((social) => (
                 <li key={social.id} className='skillBox spaceBet'>
                     <div className="skillTitle">
-                        {social.skillChecked ? <input type="checkbox" checked /> : <input type="checkbox" />}
+                        <input type="checkbox" 
+                            checked={selected.includes(social.id)}
+                            onChange={() => {handleChecking(social) }} /> 
                         <p>{social.socialTitle}</p>
                     </div>
                     <div className="edit">
-                       
+                       {(selected.length <= 1) &&
                                 <button className="skillDelete" onClick={() => editSocial(social.id )}>
                                 <img src={Edit} alt="Edit buttton" style={{width:'18px'}} />
                                 </button>
-                           
+                           }
                       
                     </div>
                     
@@ -171,7 +198,14 @@ const Social = () => {
                         isDisabled={isLoading}
                         isLoading={isLoading}
                         placeholder={'Select or add a platform'}
-                        
+                        styles = {{
+                            control: (baseStyles, state ) => (
+                                {
+                                    ...baseStyles,
+                                    border: state.isFocused ? '':'1px solid #084482',
+                                }
+                            ),
+                        }}
                      />
                     
                     <ErrorMessage name='socialTitle' component={'div'} className='error' />
@@ -182,7 +216,16 @@ const Social = () => {
                         className='radius5px'
                     /> 
                     <ErrorMessage name='socialLink' component={'div'} className='error' />
-                    <button type='submit' className="skillModalBtn blueBg radius5px btn addSkillBtn">Add</button>
+                    {(editValues) ?
+                                <div className='skillFlex'>
+                                     <button type='submit' className="addSkillBtn btn blueBg radius5px">Edit link</button>
+                                     <button type='button' className="addSkillBtn btn redbg radius5px dltBtn" onClick={() => removeSocial(editValues.id, formik)}>
+                                        <img src={Trash} alt="delete buttton" style={{width:'18px', color:'#ffffff'}} /> Delete
+                                    </button>
+                                </div>
+                                :   <button type='submit' className="skillModalBtn blueBg radius5px btn addSkillBtn">Add</button>
+                            }
+                   
                 </Form>)
                 }}
             </Formik>

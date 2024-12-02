@@ -15,6 +15,10 @@ import 'rc-slider/assets/index.css';
 import './App.css'
 import RcSlider from './Components/Slider';
 import Animation from './pages/Animation';
+import Checklist from './pages/CheckList';
+import Search from './pages/Search';
+import Posts from './pages/Posts';
+
 
 
 function App() {
@@ -51,6 +55,9 @@ function App() {
         <Route path="/form" element={<YoutubeForm />} />
         <Route path="/select" element={<ReactSelect />} />
         <Route path="/animate" element={<Animation />} />
+        <Route path="/check" element={<Checklist />} />
+        <Route path="/search" element={<Search />} />
+        <Route path="/posts" element={<Posts />} />
 
       </Routes>
     </Router>

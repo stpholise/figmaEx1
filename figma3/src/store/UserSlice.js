@@ -35,8 +35,14 @@ const userSlice = createSlice({
             state.social = action.payload
         },
         removeASocial: (state, action) => {
-            const { index } = action.payload;
-            state.social = state.social.filter((_, i) => i !== index)
+          
+            state.social = state.social.filter((social) =>  social.id !== action.payload)
+            console.log(action.payload)
+        },
+        delMultipleSocial:(state, action) => {
+            state.social= state.social.filter(
+                (item) => !action.payload.includes(item.id)
+            )
         },
         setNewSocial: (state, action) => {
             state.social = action.payload;
@@ -44,14 +50,24 @@ const userSlice = createSlice({
         handleUserchange: (state, action) => {
             state.user = action.payload
         },
-        addSkill: (state, action) => {
-            const { title, proficiency, id } = action.payload;
-            const updatedSkills = {  skillProficiency:proficiency, skillTitle:title, id:id  }   
-            state.skills = [...state.skills, updatedSkills]
+        addSkill: (state, action) => {   
+            state.skills = [...state.skills, action.payload]
+        },
+        editedSkills: (state, action) => {
+            state.skills = state.skills.map((skill) => skill.id === action.payload.id ? action.payload : skill)
+        },
+        updateSkills: (state, action) => {
+            state.skills = action.payload
         },
         removeSkill: (state, action) => {
             const updatedSkills = state.skills.filter(({id})=> id !== action.payload)
             state.skills = [...updatedSkills]
+        },
+        removeMultipleSkills: (state, action)=>{
+            state.skills =  state.skills.filter(
+                (item) => !action.payload.includes(item.id)
+            );
+           
         },
         clearUserState: ()=>initialState
     }
@@ -59,7 +75,12 @@ const userSlice = createSlice({
 
 export const {
     addNewSocial,
+    delMultipleSocial,
+    removeASocial,
     handleUserchange,
+    updateSkills,
+    removeMultipleSkills,
+    editedSkills,
     setSkill,
     addSkill,
     removeSkill,
