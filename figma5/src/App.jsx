@@ -18,6 +18,8 @@ import Animation from './pages/Animation';
 import Checklist from './pages/CheckList';
 import Search from './pages/Search';
 import Posts from './pages/Posts';
+import MyComponent from './pages/MyComponent';
+import MyPagination from './pages/MyPagination';
 
 
 
@@ -58,6 +60,8 @@ function App() {
         <Route path="/check" element={<Checklist />} />
         <Route path="/search" element={<Search />} />
         <Route path="/posts" element={<Posts />} />
+        <Route path="/pagination" element={<MyComponent />} />
+        <Route path="/test" element={<MyPagination />} />
 
       </Routes>
     </Router>

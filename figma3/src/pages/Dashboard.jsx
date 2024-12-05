@@ -1,5 +1,5 @@
 
-import { PropTypes } from 'prop-types'
+// import { PropTypes } from 'prop-types'
 import Slider from 'rc-slider'
 import 'rc-slider/assets/index.css';
 import DisplayPhoto from '../assets/OhKElOkQ3RE.png'
@@ -13,7 +13,7 @@ import Dribble from '../assets/topcoat_dribble.svg'
 import { useSelector } from 'react-redux'
 
 
-const Dashboard = ({scrollToTop}) => {
+const Dashboard = () => {
 
     const cards = [
         { title: 'JOBS', count: 3052, status:'AVAILABLE' },
@@ -25,7 +25,7 @@ const Dashboard = ({scrollToTop}) => {
 
   
 
-    scrollToTop()
+    // scrollToTop()
    
 
   return (
@@ -58,8 +58,8 @@ const Dashboard = ({scrollToTop}) => {
                 <p className="profileLocation address"> <img src={LocationIcon} alt="profile Location" /> <span>Lagos, Nigeria</span></p>
                 <h5 className="profileTitle address">Portfolio</h5>
                 <p className="profileTwitter address"><img src={TwitterIcon} alt="Twitter link" /> @Anosike_UI</p>
-                <p className="profileDribble address"><img src={Dribble} alt="Dribble link" />https://dribbble.com</p>
-                <p className="profileBehance address"><img src={Behance} alt="Behance link" />https://www.behance.net</p>
+                <a href='https://dribbble.com' rel="noopener" target='_blank' className="profileDribble address"><img src={Dribble} alt="Dribble link" />https://dribbble.com</a>
+                <a href='https://www.behance.net' rel="noopener" target='_blank' className="profileBehance address"><img src={Behance} alt="Behance link" />https://www.behance.net</a>
             </div>
             </div>
         </section>
@@ -103,8 +103,8 @@ const Dashboard = ({scrollToTop}) => {
   )
 }
 
-Dashboard.propTypes = {
-    scrollToTop: PropTypes.func.isRequired
-}
+// Dashboard.propTypes = {
+//     scrollToTop: PropTypes.func.isRequired
+// }
 
 export default Dashboard
