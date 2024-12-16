@@ -1,12 +1,11 @@
-// import '../styles/Jobs.css'
 
 import { PropTypes } from 'prop-types'
 import { useState } from 'react'
-import Close from '../assets/close.svg'
-import ProgressBar from './ProgressBar'
+import Close from '../../assets/close.svg'
+import ProgressBar from '../ProgressBar'
 import CountryFilter from './CountryFilter'
-import More from '../assets/moreIcon.svg'
-import Less from '../assets/lessIcon.svg'
+import More from '../../assets/moreIcon.svg'
+import Less from '../../assets/lessIcon.svg'
 
 
 
@@ -20,7 +19,7 @@ const Filter = ({
 
      const [ salaryMin, setSalaryMin ] = useState(0)
      const [ salaryMax, setSalaryMax ] = useState(0)
-     const [ toggleSkills, setToggleSkills ] = useState(true)
+     const [ toggleSkills, setToggleSkills ] = useState(false)
      const [ isMinSalryOpen,  setIsMinSalaryOpen] = useState(false)
      const [ isMaxSalryOpen,  setIsMaxSalaryOpen] = useState(false)
      const [ jobType, setJobType] = useState('')
@@ -30,6 +29,7 @@ const Filter = ({
     const [ jobTypeToggle, setJobTypeToggle] = useState(false)
     const [ jobClassificationToggle, setJobClassificationToggle] = useState(false)
     const [ isCountryOpen, setIsCountryOpen ] = useState(false)
+    const [ isClearable, setIsClearable ] = useState([])
 
     const clearFilter = () => {
         setCountry({ value: 'gb', label: 'Great Breatean'})
@@ -43,8 +43,9 @@ const Filter = ({
         setJobTypeToggle(false)
         setIsMaxSalaryOpen(false)
         setIsMinSalaryOpen(false)
-        
+        setIsClearable([])
     }
+  
     const closeFilter = () =>{
         setIsVisible(false)
         clearFilter()
@@ -71,6 +72,8 @@ const Filter = ({
         { value: 'za', label: 'South Africa'},
     ]
  
+
+
     // handle dropdown toggles 
     const handlSkillToggle = () => {
         setToggleSkills(!toggleSkills)
@@ -117,14 +120,32 @@ const jobTypesArr = [
     } else {
         setSelected([...selected, e.target.value])
     }
+    if(isClearable.includes(e.target.value)){
+        setIsClearable(isClearable.filter(skill => skill !== e.target.value))
+    } else {
+        setIsClearable([...isClearable, e.target.value])
+    }
+   
  }
 
  const hadleJobType = (e) => {
     setJobType(e.target.value)
+    if(isClearable.includes(e.target.value)){
+        setIsClearable(isClearable.filter(skill => skill !== e.target.value))
+    } else {
+        setIsClearable([...isClearable, e.target.value])
+    }
+   
  }
 
  const hadleJobClassification = (e) => {
     setJobClassification(e.target.value)
+    if(isClearable.includes(e.target.value)){
+        setIsClearable(isClearable.filter(skill => skill !== e.target.value))
+    } else {
+        setIsClearable([...isClearable, e.target.value])
+    }
+   
  }
 
  const applyFilter = () => {
@@ -139,7 +160,6 @@ const jobTypesArr = [
         jobType: jobType,
     })
     setPageNumber(1)
-
  }
 
   return (
@@ -250,6 +270,8 @@ const jobTypesArr = [
                     test={true}
                     exRange = {10000}
                     hideValue={true}
+                    isClearable={isClearable}
+                    setIsClearable={setIsClearable}
                 />
             </div>
            }
@@ -273,7 +295,8 @@ const jobTypesArr = [
                     test={true}
                     hideValue={true}
                     exRange = {100000}
-                    // minRange={0}
+                    isClearable={isClearable}
+                    setIsClearable={setIsClearable} 
                 />
             </div>
            }
@@ -295,6 +318,8 @@ const jobTypesArr = [
                 countryList={countryList} 
                 setCountry={setCountry} 
                 country={country} 
+                isClearable={isClearable}
+                setIsClearable={setIsClearable}
             />
 
             </div>
@@ -304,8 +329,12 @@ const jobTypesArr = [
       
       <div className="skillFlex filter">
         <button type='button' onClick={applyFilter} className="filterBtn">Apply </button>
-        <button type='button' onClick={clearFilter} className="filterBtn clearBtn">Clear </button>
-        </div>
+    
+{    
+    isClearable.length >= 1 ?
+    <button type='button' onClick={clearFilter} className="filterBtn clearBtn">Clear </button>
+    : ''
+}        </div>
         </section>
         </form>
      

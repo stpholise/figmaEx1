@@ -20,6 +20,8 @@ import Search from './pages/Search';
 import Posts from './pages/Posts';
 import MyComponent from './pages/MyComponent';
 import MyPagination from './pages/MyPagination';
+import Toast from './pages/ToastTest';
+import Selector from './pages/Selector'
 
 
 
@@ -62,6 +64,8 @@ function App() {
         <Route path="/posts" element={<Posts />} />
         <Route path="/pagination" element={<MyComponent />} />
         <Route path="/test" element={<MyPagination />} />
+        <Route path="/toast" element={<Toast />} />
+        <Route path="/select" element={<Selector />} />
 
       </Routes>
     </Router>

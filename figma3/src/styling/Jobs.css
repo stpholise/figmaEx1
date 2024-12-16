@@ -11,7 +11,8 @@
     width:100%;
     border:1px solid #eee;
     background:#fff;
-    
+    position:sticky;
+    top:10rem;
 }
 
 .jobs .h5{
@@ -146,7 +147,7 @@
     padding: 1rem;
     background: #fff;
     border-radius: 9px;
-    box-shadow: 1px 1px 2px #444;
+    /* box-shadow: 1px 1px 2px #444; */
 }
 .viewMore { 
     display:none;
@@ -162,9 +163,339 @@
     align-items:center;
     gap:10px;
   }
+
+
+  /* JOB DETAIL */
+  /* =============================== */
+  /* =============================== */
+  /* =============================== */
+  /* =============================== */
+
+  /* .jobDetail{
+    max-width: 700px;
+    display:flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: flex-start;
+    gap:0.5rem;
+    margin:auto;
+  } */
+   .successWrapper.jobDetail{
+        align-items:start;
+   }
+
+  .companyCont{
+    padding:0.5rem 0;
+  }
+
+  .companyCont .companyName{
+    border-bottom:1px solid #ccc;
+    width:fit-content;
+  }
+
+  .applyBtns{
+    display:flex;
+    gap:1rem;
+    
+  }
+ 
+
+  .applyLink{
+    color:#fff;
+    padding:0.5rem 1.5rem;
+    border-radius:5px;
+    cursor:pointer;
+    text-align:center;
+    display:block; 
+    font-weight:700;
+    width:auto;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:0.5rem;
+    width:max-content;
+    margin:0.5rem 0;
+  }
+  .applyLink button {
+    font-size:large;
+    color:#fff;
+  }
+
+  .applyHere{
+    background:transparent;
+    color: #333;
+    border:1px solid #0A84FF;
+    box-shadow:  0.5px 0.5px 0.5px   #0A84FF ;
+  }
+
+  .applyLink.applyHere button{
+    color: #333;
+  }
+
+  .jobDetailDescription{
+    text-align:justify;
+  }
+  /* JOB APPLIICATION  */
+  /* ==================== */
+  /* ==================== */
+  /* ==================== */
+  /* ==================== */
+  /* ==================== */
+  /* ==================== */
+   
+.fullSize Form .expirienceWrap{
+    display:flex;
+    gap:0.5rem;
+  
+}
+
+.fullSize Form .field{
+    width:100%;
+    outline:none;
+    border:1px solid #ccc;
+    padding: 0.7rem;
+    margin:0.3rem 0;
+}
+
+ .jobApplicationBtn{
+    width:100%;
+    max-width:400px;
+    margin:40px auto 1rem;
+    padding:0.5rem 60px;
+    height:48px; 
+    background:#0A84FF;
+} 
+.formControl.border{
+    display:grid;
+    grid-template-columns:10fr 1fr;
+    padding:0.5rem;
+    width:100%;
+    margin:40px 0;
+    border:1px solid rgba(204, 204, 204, 0.4);
+
+}
+
+.smallTxt{
+    font-size:12px;
+}
+.valueBoxWrap{ 
+    padding-top:1rem 0;
+}
+.valueBox{
+    width:100%;
+    /* box-shadow: 0 6px 20px 0 #A6A6A640; */
+    margin:1rem 0;
+    padding:0.5rem;
+     
+}
+.valueBox .valueWrap{
+    display:flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    align-items:flex-start;
+    font-size:13px;
+    flex-direction:column;
+    border-bottom:1px solid #ccc;
+    padding:1rem;
+    
+}
+.valueBox .valueWrap:last-of-type{
+    border-bottom:none;
+}
+.valueBox .valueWrap .label{
+    font-size:13px;
+}
+.valueBox .valueWrap .value{
+    font-size:15px;
+    font-weight:700;
+}
+.valueBoxTitle.top{
+    margin:0.7rem 0;
+}
+
+.employerQuest{
+    margin:1rem 0;
+
+    font-size:20px;
+}
+
+.summaryTitle{
+    font-size:17px;
+}
+.headlable{
+    font-size:13px;
+    margin-top:1rem;
+    margin-bottom:4px;
+    display:inline-block;
+}
+.experiencelabel{
+    font-size:12px;
+}
+
+.backTextBtn{
+    color:black;
+    padding-left:0;
+}
+.valueWrap.fileWrap{
+    display:flex;
+    flex-direction:row;
+    gap:1rem;
+}
+.fileName{
+    color:#0A84FF;
+}
+.modalOverlay.overlay{
+    position:fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 950;
+}
+
+
+/* =======app success ======== */
+/* ============================= */
+/* ============================= */
+/* ============================= */
+/* ============================= */
+/* ============================= */
+.fullSize{
+    width:calc(100% - 255px);
+    margin-left: 243px;
+    margin-top: 104px  ; 
+    padding: 1rem 40px;
+    height:calc(100vh - 104px)
+}
+.successWrapper{ 
+    margin: 50px auto 0 ; 
+    padding:1rem; 
+    border:1px solid #ccc;
+    border-radius:10px;  
+    background:#fff; 
+    width:100%;
+    height:100%; 
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+}
+
+.successWrapper.reviewWrapper{
+    padding:2rem;
+}
+ 
+.successWrapper.reviewWrapper div{
+    width:100%;
+}
+
+.centerHeading {
+    text-align: center;
+    margin: 8px 0 ;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center; 
+    font-size:26px;
+    line-height:32px;
+}
+.centerHeading h2{
+    font-size:20px;
+}
+
+.successStatus{
+    margin:1rem 0;
+    display:flex;
+    justify-content: start;
+    align-items: center;
+    gap:1rem; 
+}
+
+.successImg{
+    width:300px;
+    margin-bottom:20px;
+}
+.checkIcon{
+    font-size:30px
+}
+.stausText{
+    color:#0A84FF;
+    font-size:14px;
+}
+.justifyText{
+    text-align:justify; 
+}
+
+.successBtn {
+    color:#0A84FF;
+    background:#fff;
+    border:1px solid #ccc;  
+    margin:40px auto 1rem;
+    padding:0.5rem 60px;
+    height:48px; 
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    border-radius:5px;
+    width:100%;
+    font-weight:700;
+    font-size:14px; 
+    max-width:300px;
+}
+/*  SAVED JOBS MENU */
+/* ===================== */
+/* ===================== */
+/* ===================== */
+/* ===================== */
+.saved-jobs-menu{
+    display:flex;
+    padding: 0.5rem;
+    gap:1rem;
+    justify-content: center;
+    align-items: center;
+    background:#fff;
+    width:100%;
+    border-radius:5px;
+    
+}
+ .saved-jobs-menu button{
+    padding-bottom:0.5rem; 
+    border-bottom: 2px solid transparent;
+ }
+
+.saved-jobs-menu button.active{
+    border-bottom:2px solid #0A84FF;
+    color:#0A84FF;
+}
+
+ 
+.saved-jobs-menu button:hover{
+    border-bottom:2px solid #0A84FF;
+    color:#0A84FF;
+    transition:ease-in-out 0.3s;
+}
+.fullSize.flexLeft {
+    margin-left: 212px;
+}
+
+@media(max-width:1024px){
+    .fullSize{ 
+        width:calc(100% - 0); 
+        margin: 50px auto 0 ; 
+        padding: 0 10px;
+        height:calc(100vh - 104);
+        justify-content:center;
+        align-items:baseline;
+    }
+}
+
 @media(max-width: 760px ) {
     .jobs{
         grid-template-columns: 1fr;
+    }
+    .jobDetails{
+        flex-direction:column;
     }
 
     .filterContainer.show{
@@ -230,14 +561,50 @@
     .viewMore { 
         display:flex;
         margin:auto;
-        padding:0.5rem;
+        padding:0.8rem;
         background:#0A84FF;
         color:#fff;
         border-radius:5px;
         cursor:pointer;
-        width:50%;
+        width:100%;
         justify-content:center;
     }
+    .jobApplication{
+        padding:0.5rem;
+        margin:0;
+        width:100%;
+       
+    }
+    .contactInfo.modal.skillModal{
+        margin-top:auto;
+        top:55%;
+        height:90%;
+        overflow-y:scroll;
+       
+    }
+    .fullSize{ 
+        width:100% ;
+        margin-left: 0;
+        margin: 60px auto 0 ; 
+        padding: 0 10px;
+        height:calc(100vh - 60px);
+        justify-content:center;
+        align-items:baseline;
+    }
+    .successWrapper{ 
+     
+        background:#fff; 
+        width:100%; 
+        height:100%;
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        align-items:center;
+    }
+
+.stausText{
+    display:inline-block;
+}
 
 }
 
@@ -252,5 +619,32 @@
         width:25px;
         margin:auto;
     }
+    .jobApplication {
+        width:100%;
+    }
 
+    .fullSize{
+        width: 100%  ;
+        margin-left: 0;
+        margin-top: 60px  ; 
+        padding: 0  ;
+        height:calc(100vh - 60px);
+    }
+    .successWrapper{ 
+        padding:1rem; 
+        border:1px solid #ccc;
+        border-radius:10px;  
+        background:#fff; 
+        width:100%;
+        height:calc(100vh - 60px); 
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        align-items:center;
+    }
+
+    .jobDetails .imageDetail {
+        width: 30px;
+        margin: 0.5rem 0;
+    }
 }

@@ -1,16 +1,13 @@
 import { useDispatch, useSelector } from 'react-redux'
-// import {  
-//   handleUserchange, 
-// } from '../store/UserSlice'
-import DisplayPhoto from '../assets/OhKElOkQ3RE.png'
-import Star from '../assets/Star 4.svg'
-import EmailIcon from '../assets/carbon_email.svg'
-import LocationIcon from '../assets/carbon_location.svg'
-import PhoneIcon from '../assets/bx_bx-phone.svg'
-import {useState } from 'react'
-import Close from '../assets/close.svg'
-import { modalIsOpen, modalIsClose } from '../store/AppSlice'
-import {  handleUserchange } from '../store/UserSlice'
+import DisplayPhoto from '../../assets/OhKElOkQ3RE.png'
+import Star from '../../assets/Star 4.svg'
+import EmailIcon from '../../assets/carbon_email.svg'
+import LocationIcon from '../../assets/carbon_location.svg'
+import PhoneIcon from '../../assets/bx_bx-phone.svg'
+import { useState } from 'react'
+import Close from '../../assets/close.svg'
+import { modalIsOpen, modalIsClose } from '../../store/AppSlice'
+import { handleUserchange } from '../../store/UserSlice'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
 import {  PropTypes } from 'prop-types'
@@ -19,8 +16,8 @@ import {  PropTypes } from 'prop-types'
 const Person = ({employer }) => {
   const dispatch = useDispatch() 
   const user = useSelector((state) => state.users.user)
-  const {name, email, occupation, phone, location } = user
-  const [editProfileModal, setEditProfileModal] = useState(false)
+  const { name, email, occupation, phone, location } = user
+  const [ editProfileModal, setEditProfileModal] = useState(false)
 
   const initialValues = {
     name: name || '',
@@ -48,10 +45,8 @@ const Person = ({employer }) => {
   })
   const handleUserUpdate =  (values, actions) => {
     dispatch(handleUserchange(values)); // Update Redux state
-    console.log(values)
     setEditProfileModal(false); // Close modal
     actions.resetForm(); // Reset Formik form
-
   }
   const profileModalToggle = () => {
     setEditProfileModal(!editProfileModal)

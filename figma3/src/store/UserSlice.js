@@ -2,10 +2,10 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
     user:{
-        name: 'Genesis',
+        name: 'Genesis Anosike',
         occupation: 'UI/UX Designer',
         email: 'genesis@gmail.com',
-        phone: '0801 - 234 - 5678',
+        phone: '08012345678',
         location: 'Lagos, Nigeria',
         twitter: '@Anosike_UI',
     },
@@ -35,9 +35,7 @@ const userSlice = createSlice({
             state.social = action.payload
         },
         removeASocial: (state, action) => {
-          
             state.social = state.social.filter((social) =>  social.id !== action.payload)
-            console.log(action.payload)
         },
         delMultipleSocial:(state, action) => {
             state.social= state.social.filter(
@@ -67,7 +65,6 @@ const userSlice = createSlice({
             state.skills =  state.skills.filter(
                 (item) => !action.payload.includes(item.id)
             );
-           
         },
         clearUserState: ()=>initialState
     }
@@ -85,6 +82,6 @@ export const {
     addSkill,
     removeSkill,
     clearUserState
-  } = userSlice.actions;
+} = userSlice.actions;
 
   export default userSlice.reducer
