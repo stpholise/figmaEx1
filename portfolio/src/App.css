@@ -68,7 +68,7 @@
   .hero{
     width:100%;
     min-height: 90vh; 
-    background: linear-gradient(100deg, var(--gray-bg2) 40%, #000 40%);  
+    /* background: linear-gradient(100deg, var(--gray-bg2) 40%, #000 40%), url(./assets/heroImage.png);   */
     grid-template-columns:1fr 1fr;
     align-items:center;
     justify-content:center;
@@ -88,7 +88,7 @@
   .hero{
     width:100%;
     min-height: 60vh; 
-    background: linear-gradient(100deg, var(--gray-bg2) 55%, #000 40%);  
+    /* background: linear-gradient(100deg, var(--gray-bg2) 55%, #000 40%);   */
     display:flex;
     flex-direction:column-reverse;
     grid-template-columns:1fr 1fr;
@@ -110,7 +110,7 @@
   .hero{
     width:100%;
     min-height: 60vh; 
-    background: linear-gradient(160deg, var(--gray-bg2) 40%, #000 20%);   
+    /* background: linear-gradient(160deg, var(--gray-bg2) 40%, #000 20%);    */
     align-items:stretch;
 
   align-content: space-between;
@@ -141,7 +141,9 @@
   .hero{
     width:100%;
     min-height: 60vh; 
-    background: linear-gradient(160deg, var(--gray-bg2) 40%, #000 20%),  url('./assets/heroImage.png');   
+    background: url('./assets/portfolio_image.png'), linear-gradient(160deg, rgba(232, 232, 234, 1) 40%, rgba(0, 0, 0, 0.9) 20%) ;   
+    background-position:center;
+    background-size:cover;
     align-items:center;
     justify-content:center;
     padding:  0; 
@@ -168,6 +170,8 @@
     justify-content:space-between; 
    
   }
- 
+ .porfolioImage{
+  display:none;
+ }
   
 }
